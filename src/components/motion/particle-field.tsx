@@ -57,8 +57,9 @@ export function ParticleField({ density = 0.00008 }: { density?: number }) {
       }
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i];
-          const b = particles[j];
+          const a = particles[i]!;
+          const b = particles[j]!;
+
           const dx = a.x - b.x;
           const dy = a.y - b.y;
           const dist = Math.hypot(dx, dy);
