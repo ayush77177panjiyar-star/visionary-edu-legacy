@@ -82,8 +82,9 @@ export function ParticleField({ density = 0.00008 }: { density?: number }) {
     const onResize = () => build();
     window.addEventListener("resize", onResize);
 
-    const io = new IntersectionObserver(([entry]) => {
-      running = entry.isIntersecting;
+    const io = new IntersectionObserver((entries) => {
+      running = entries[0]?.isIntersecting ?? false;
+
       cancelAnimationFrame(raf);
       if (running) raf = requestAnimationFrame(draw);
     });
