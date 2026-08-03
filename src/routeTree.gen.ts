@@ -11,7 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AwardsRouteImport } from './routes/awards'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as JourneyRouteImport } from './routes/journey'
 import { Route as MediaRouteImport } from './routes/media'
 import { Route as UniversityRouteImport } from './routes/university'
@@ -26,9 +29,24 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AwardsRoute = AwardsRouteImport.update({
+  id: '/awards',
+  path: '/awards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JourneyRoute = JourneyRouteImport.update({
@@ -50,7 +68,10 @@ const UniversityRoute = UniversityRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/awards': typeof AwardsRoute
+  '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/impact': typeof ImpactRoute
   '/journey': typeof JourneyRoute
   '/media': typeof MediaRoute
   '/university': typeof UniversityRoute
@@ -58,7 +79,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/awards': typeof AwardsRoute
+  '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/impact': typeof ImpactRoute
   '/journey': typeof JourneyRoute
   '/media': typeof MediaRoute
   '/university': typeof UniversityRoute
@@ -67,21 +91,45 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/awards': typeof AwardsRoute
+  '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/impact': typeof ImpactRoute
   '/journey': typeof JourneyRoute
   '/media': typeof MediaRoute
   '/university': typeof UniversityRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/gallery' | '/journey' | '/media' | '/university'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/awards'
+    | '/contact'
+    | '/gallery'
+    | '/impact'
+    | '/journey'
+    | '/media'
+    | '/university'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/gallery' | '/journey' | '/media' | '/university'
+  to:
+    | '/'
+    | '/about'
+    | '/awards'
+    | '/contact'
+    | '/gallery'
+    | '/impact'
+    | '/journey'
+    | '/media'
+    | '/university'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/awards'
+    | '/contact'
     | '/gallery'
+    | '/impact'
     | '/journey'
     | '/media'
     | '/university'
@@ -90,7 +138,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AwardsRoute: typeof AwardsRoute
+  ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
+  ImpactRoute: typeof ImpactRoute
   JourneyRoute: typeof JourneyRoute
   MediaRoute: typeof MediaRoute
   UniversityRoute: typeof UniversityRoute
@@ -112,11 +163,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/awards': {
+      id: '/awards'
+      path: '/awards'
+      fullPath: '/awards'
+      preLoaderRoute: typeof AwardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/journey': {
@@ -146,7 +218,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AwardsRoute: AwardsRoute,
+  ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
+  ImpactRoute: ImpactRoute,
   JourneyRoute: JourneyRoute,
   MediaRoute: MediaRoute,
   UniversityRoute: UniversityRoute,
