@@ -155,7 +155,7 @@ function StatBand() {
             <div>
               <Counter
                 value={stat.value}
-                suffix={"suffix" in stat ? (stat.suffix as string) : undefined}
+                {...("suffix" in stat ? { suffix: stat.suffix as string } : {})}
                 className="font-display text-4xl font-semibold tracking-tight text-primary sm:text-5xl"
               />
               <p className="mt-2 text-sm font-medium text-foreground">{stat.label}</p>
@@ -176,8 +176,8 @@ function AboutPreview() {
         <Reveal>
           <div className="relative">
             <img
-              src={galleryItems[1].src}
-              alt={galleryItems[1].alt}
+              src={galleryItems[1]!.src}
+              alt={galleryItems[1]!.alt}
               loading="lazy"
               width={1200}
               height={800}
@@ -196,22 +196,22 @@ function AboutPreview() {
           <SectionHeading
             eyebrow="About"
             title="A builder of institutions, not just buildings"
-            lede={biography.paragraphs[0]}
+            lede={biography.paragraphs[0]!}
           />
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-            {biography.paragraphs[1]}
+            {biography.paragraphs[1]!}
           </p>
           <SourceLink href={biography.source} label={biography.sourceLabel} className="mt-5" />
 
           <blockquote className="mt-10 border-l-2 border-gold pl-6">
             <p className="font-display text-lg italic leading-relaxed text-foreground sm:text-xl">
-              “{philosophy.quotes[0].text}”
+              “{philosophy.quotes[0]!.text}”
             </p>
             <footer className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
               <span>Pro Chancellor's message</span>
               <SourceLink
-                href={philosophy.quotes[0].source}
-                label={philosophy.quotes[0].sourceLabel}
+                href={philosophy.quotes[0]!.source}
+                label={philosophy.quotes[0]!.sourceLabel}
               />
             </footer>
           </blockquote>
